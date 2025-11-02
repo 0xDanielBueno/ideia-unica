@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { JSX } from "react";
 import "./globals.css";
 
@@ -8,7 +9,10 @@ type RootLayoutProps = {
 const RootLayout: React.FC<RootLayoutProps> = ({ children }): JSX.Element => {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <SpeedInsights />
+      </body>
     </html>
   );
 };

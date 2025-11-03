@@ -1,7 +1,5 @@
 import { JSX } from "react";
 
-export const dynamic = "force-static";
-
 type TempoProps = {
   staticDate: string;
 };
@@ -19,9 +17,15 @@ const Tempo: React.FC<TempoProps> = ({
   );
 };
 
-export const getStaticDate = (): string => {
+export const getStaticDate = async (): Promise<string> => {
   console.log("> Passando pelo getStaticDate()");
-  return new Date().toUTCString();
+  const res = await fetch(
+    "http://worldtimeapi.org/api/timezone/America/Sao_Paulo",
+    { cache: "force-cache" }
+  );
+  const { datetime: dateTime } = await res.json();
+  const resDate = new Date(dateTime).toUTCString();
+  return resDate;
 };
 
 export default Tempo;

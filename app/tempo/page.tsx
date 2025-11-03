@@ -1,5 +1,7 @@
 import { JSX } from "react";
 
+export const dynamic = "force-dynamic";
+
 type TempoProps = {
   staticDate: string;
 };

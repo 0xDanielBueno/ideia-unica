@@ -23,7 +23,7 @@ export const getStaticDate = async (): Promise<string> => {
   console.log("> Passando pelo getStaticDate()");
   const res = await fetch(
     "http://worldtimeapi.org/api/timezone/America/Sao_Paulo",
-    { cache: "force-cache" }
+    { next: { revalidate: 1 } }
   );
   const { datetime: dateTime } = await res.json();
   const resDate = new Date(dateTime).toUTCString();
